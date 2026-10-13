@@ -68,7 +68,7 @@ every existing install. `tests/id.test.mjs` checks that the QML uses the manifes
 
 ## Working here
 
-Git: GitHub `apodacaa/rythe-omarchy-plugin` (private). Work lands on `main` through a pull
+Git: GitHub `apodacaa/rythe-omarchy-plugin` (public). Work lands on `main` through a pull
 request: branch, commit, push, `gh pr create`. The user decides when to merge. Don't commit
 straight to `main`.
 
