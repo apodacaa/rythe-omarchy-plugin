@@ -8,7 +8,8 @@ has been since the last journal entry. It's a nudge to write, and a one-click wa
 | a dimmed book | there's an entry from today |
 | a book and `3d` | the last entry was three days ago |
 | a book alone, not dimmed | the journal has no entries yet |
-| nothing | the `journal` command can't be run |
+| a book and `!` | the `journal` CLI isn't installed |
+| nothing | `journal` is installed but `journal status` failed |
 
 Hovering shows a little more: `Last entry 3 days ago · 2 entries this week · 1 on this day`.
 
@@ -16,12 +17,29 @@ Hovering shows a little more: `Last entry 3 days ago · 2 entries this week · 1
   widget refreshes, so the count drops straight away.
 - **Right click** refreshes now.
 
+While the CLI is missing, the tooltip says so and either click checks again, so the widget picks
+it up as soon as it's installed.
+
 Everything comes from `journal status --json`, which is asked every five minutes. That is counts
 and dates only: no entry text or titles ever reach the bar.
 
-## Install
+## Requirements
 
-It needs the `journal` CLI on the shell's PATH (`~/.local/bin` is).
+- [Omarchy](https://omarchy.org) 4 or later, which is where the plugin system comes from.
+- The [`journal`](https://github.com/apodacaa/journal) CLI. The widget is only a view of it: the
+  CLI is the journal, and it is not installed with the plugin. With
+  [uv](https://docs.astral.sh/uv/):
+
+  ```
+  uv tool install git+https://github.com/apodacaa/journal
+  ```
+
+  That puts `journal` in `~/.local/bin`, which is on the shell's PATH. There is nothing to set up
+  after that; `journal setup` is there if you want to choose where the journal lives.
+
+The two can be installed in either order. Without the CLI the widget shows `!` until it appears.
+
+## Install
 
 ```
 omarchy plugin add <git-url-or-path-of-this-repo> --enable

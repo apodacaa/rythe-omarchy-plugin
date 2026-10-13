@@ -25,8 +25,10 @@ function writtenToday(status) {
   return daysSince(status) === 0
 }
 
-// The text beside the icon: "3d" once a day or more has passed, otherwise nothing.
-function label(status) {
+// The text beside the icon: "3d" once a day or more has passed, otherwise nothing. `missing` is
+// true when the journal CLI isn't installed, which gets a "!" so the widget says so.
+function label(status, missing) {
+  if (missing) return "!"
   var days = daysSince(status)
   return days >= 1 ? days + "d" : ""
 }
@@ -35,7 +37,8 @@ function plural(count, one, many) {
   return count + " " + (count === 1 ? one : many)
 }
 
-function tooltip(status) {
+function tooltip(status, missing) {
+  if (missing) return "journal CLI not installed · click to check again"
   if (!status) return ""
   var days = daysSince(status)
   var parts = []

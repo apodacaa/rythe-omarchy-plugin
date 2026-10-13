@@ -52,6 +52,15 @@ test("the tooltip says when the last entry was, this week's count, and on-this-d
   assert.equal(Model.tooltip(null), "")
 })
 
+test("a missing CLI gets a mark and a tooltip that says so, whatever the status", () => {
+  for (const s of [null, empty, status()]) {
+    assert.equal(Model.label(s, true), "!")
+    assert.equal(Model.tooltip(s, true), "journal CLI not installed · click to check again")
+  }
+  assert.equal(Model.label(status(), false), "3d")
+  assert.equal(Model.tooltip(null, false), "")
+})
+
 test("nothing in the label or tooltip comes from an entry's id or text", () => {
   const s = status({ last_entry_id: "SECRET-ID", title: "SECRET-TITLE", body: "SECRET-BODY" })
   assert.doesNotMatch(Model.label(s) + Model.tooltip(s), /SECRET/)
