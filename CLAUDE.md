@@ -56,5 +56,6 @@ Don't edit the installed copy: it gets replaced on update.
 
 ## Working here
 
-Work lands on `main` through a pull request once the repo has a GitHub remote: branch, commit,
-push, `gh pr create`. The user decides when to merge. Don't commit straight to `main`.
+Git: GitHub `apodacaa/journal-omarchy-plugin` (private). Work lands on `main` through a pull
+request: branch, commit, push, `gh pr create`. The user decides when to merge. Don't commit
+straight to `main`.
