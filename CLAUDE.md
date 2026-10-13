@@ -1,24 +1,24 @@
-# journal omarchy-plugin
+# rythe omarchy-plugin
 
-The journal in Omarchy's bar: plugin id `io.github.apodacaa.journal`, one `bar-widget` that shows
+The journal in Omarchy's bar: plugin id `io.github.apodacaa.rythe`, one `bar-widget` that shows
 the days since the last entry and opens a terminal on a new one. It's for this machine (Omarchy, `omarchy-shell`,
 Quickshell/QML). This repo lives in the `~/Work/journal` hub as `omarchy-plugin/`, beside the CLI
 in `cli/`; the hub's `CLAUDE.md` has the rules that span the repos.
 
 ## Design rules
 
-- **The `journal` CLI is the app; this plugin is a client of it.** It runs
-  `journal status --json` and shows the answer. No journal logic in QML: never read entry files,
-  never write into the data folder. To create an entry it runs plain `journal` in a terminal.
+- **The `rythe` CLI is the app; this plugin is a client of it.** It runs
+  `rythe status --json` and shows the answer. No journal logic in QML: never read entry files,
+  never write into the data folder. To create an entry it runs plain `rythe` in a terminal.
 - **A CLI gap gets fixed in the CLI.** If the widget needs a field `status --json` doesn't give,
   add it in `~/Work/journal/cli` on its own branch with tests, and merge that first.
 - **Counts and dates only in the bar.** The bar is visible on screen shares and over a shoulder.
   No entry text, titles or ids in the label or tooltip; a test checks.
-- **Logic goes in `Model.js`, wiring in `JournalWidget.qml`.** `Model.js` is plain functions with
+- **Logic goes in `Model.js`, wiring in `RytheWidget.qml`.** `Model.js` is plain functions with
   no QML types, so node can test it. The QML file only runs the process, holds the status, and
   binds Model's answers to the button.
 - **Polling is slow on purpose.** Every call starts a Python process. The default is five minutes;
-  the terminal's `omarchy-shell io.github.apodacaa.journal refresh` covers the moment that matters.
+  the terminal's `omarchy-shell io.github.apodacaa.rythe refresh` covers the moment that matters.
 - **Don't name the widget file `BarWidget.qml`.** That is also the name of the base type from
   `qs.Ui`, and qmllint reports an inheritance cycle.
 - The upstream reference is `/usr/share/omarchy/shell/plugins/README.md` and the shipped widgets
@@ -29,7 +29,7 @@ in `cli/`; the hub's `CLAUDE.md` has the rules that span the repos.
 
 ```
 manifest.json        id, kind, entry point; what `omarchy plugin validate` checks
-JournalWidget.qml    the widget: Process + Timer + IpcHandler + WidgetButton
+RytheWidget.qml    the widget: Process + Timer + IpcHandler + WidgetButton
 Model.js             status JSON -> label, tooltip, written-today
 tests/               node tests for Model.js
 bin/test             node tests, manifest validation, qmllint
@@ -45,16 +45,16 @@ are noise to read through, not a gate. Nothing here touches the real journal.
 
 What `bin/test` can't cover is the widget inside the running shell. To check that by hand:
 
-- `omarchy plugin list | grep io.github.apodacaa.journal` shows it enabled.
-- `omarchy-shell io.github.apodacaa.journal refresh` answers without an error.
-- `journalctl --user -b | grep -i io.github.apodacaa.journal` shows QML errors from the shell, if
+- `omarchy plugin list | grep io.github.apodacaa.rythe` shows it enabled.
+- `omarchy-shell io.github.apodacaa.rythe refresh` answers without an error.
+- `journalctl --user -b | grep -i io.github.apodacaa.rythe` shows QML errors from the shell, if
   any.
 
 ## Installed copy
 
-The shell loads `~/.config/omarchy/plugins/io.github.apodacaa.journal/`, which is a git clone of
+The shell loads `~/.config/omarchy/plugins/io.github.apodacaa.rythe/`, which is a git clone of
 this repo made by `omarchy plugin add`. Editing here changes nothing in the bar until that clone is updated
-(`omarchy plugin update io.github.apodacaa.journal`), and it only sees commits, on the branch it cloned.
+(`omarchy plugin update io.github.apodacaa.rythe`), and it only sees commits, on the branch it cloned.
 Don't edit the installed copy: it gets replaced on update.
 
 An update may not reach the running bar by itself. On 2026-10-13 the shell logged "Local plugin
@@ -68,7 +68,7 @@ every existing install. `tests/id.test.mjs` checks that the QML uses the manifes
 
 ## Working here
 
-Git: GitHub `apodacaa/journal-omarchy-plugin` (private). Work lands on `main` through a pull
+Git: GitHub `apodacaa/rythe-omarchy-plugin` (private). Work lands on `main` through a pull
 request: branch, commit, push, `gh pr create`. The user decides when to merge. Don't commit
 straight to `main`.
 
@@ -84,7 +84,7 @@ straight to `main`.
 - Semantic versioning. Before 1.0.0 a breaking change bumps the minor number. From 1.0.0 on, the
   plugin id, the `omarchy-shell` commands and the settings keys are frozen: breaking one is a new
   major version.
-- The README names the lowest `journal` version the widget needs. Raise it when the widget starts
+- The README names the lowest `rythe` version the widget needs. Raise it when the widget starts
   using something newer, after the CLI release that has it.
 - After the pull request merges, `bin/release` on an up-to-date `main` runs `bin/test`, tags
   `v<version>`, pushes the tag and creates the GitHub release from the changelog entry.
