@@ -45,13 +45,14 @@ The two can be installed in either order. Without the CLI the widget shows `!` u
 omarchy plugin add <git-url-or-path-of-this-repo> --enable
 ```
 
-That clones this repo into `~/.config/omarchy/plugins/maaj.journal/`. Later:
+That clones this repo into `~/.config/omarchy/plugins/io.github.apodacaa.journal/`. Later:
 
 ```
-omarchy plugin update maaj.journal     # fetch, show the diff, ask, fast-forward
-omarchy plugin disable maaj.journal    # off, files stay
-omarchy plugin remove maaj.journal     # gone
-omarchy bar move maaj.journal --section right
+omarchy plugin update io.github.apodacaa.journal     # fetch, show the diff, ask, fast-forward
+omarchy plugin disable io.github.apodacaa.journal    # off, files stay
+omarchy plugin remove io.github.apodacaa.journal     # gone
+omarchy bar move io.github.apodacaa.journal --section right
+omarchy restart shell                                # if an update doesn't show in the bar
 ```
 
 ## Settings
@@ -66,6 +67,6 @@ Optional, in the widget's entry in `~/.config/omarchy/shell.json`:
 ## From a script
 
 ```
-omarchy-shell maaj.journal refresh    # ask journal status again
-omarchy-shell maaj.journal write      # same as a left click
+omarchy-shell io.github.apodacaa.journal refresh    # ask journal status again
+omarchy-shell io.github.apodacaa.journal write      # same as a left click
 ```

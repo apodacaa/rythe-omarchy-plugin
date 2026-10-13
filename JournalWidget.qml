@@ -15,7 +15,7 @@ import "Model.js" as Model
 // and either click checks again.
 BarWidget {
   id: root
-  moduleName: "maaj.journal"
+  moduleName: "io.github.apodacaa.journal"
 
   // null until the first answer, and again whenever `journal` can't be run.
   property var status: null
@@ -39,7 +39,7 @@ BarWidget {
     }
     if (!root.bar) return
     root.bar.run("omarchy-launch-tui --app-id=org.omarchy.journal sh -c '"
-      + journalCommand + "; omarchy-shell -q maaj.journal refresh'")
+      + journalCommand + "; omarchy-shell -q io.github.apodacaa.journal refresh'")
   }
 
   visible: status !== null || missing
@@ -47,7 +47,7 @@ BarWidget {
   implicitHeight: button.implicitHeight
 
   IpcHandler {
-    target: "maaj.journal"
+    target: "io.github.apodacaa.journal"
 
     function refresh(): void { root.broadcast("refresh") }
     function write(): void { root.write() }
