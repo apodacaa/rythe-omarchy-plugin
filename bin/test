@@ -1,0 +1,12 @@
+#!/bin/bash
+# Everything that can be checked without the running shell: the Model.js logic, the manifest the
+# way the shell will check it, and the QML against Omarchy's own types.
+set -euo pipefail
+cd "$(dirname "$0")/.."
+
+node --test tests/
+omarchy plugin validate .
+# qmllint ships with Qt but isn't on PATH. It can't see every type the shell provides, so its
+# warnings are for reading, not a gate; a syntax error still fails the run.
+QMLLINT=$(command -v qmllint || echo /usr/lib/qt6/bin/qmllint)
+"$QMLLINT" -I "${OMARCHY_PATH:-/usr/share/omarchy}/shell" JournalWidget.qml

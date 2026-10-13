@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "maaj.journal",
+  "name": "Journal",
+  "version": "0.1.0",
+  "author": "anthony apodaca",
+  "description": "Days since the last journal entry; click to write one",
+  "kinds": [
+    "bar-widget"
+  ],
+  "entryPoints": {
+    "barWidget": "JournalWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Journal",
+    "description": "Days since the last journal entry; click to write one",
+    "category": "Productivity",
+    "defaultSection": "right",
+    "allowMultiple": false
+  }
+}
