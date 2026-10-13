@@ -69,3 +69,7 @@ Optional, in the widget's entry in `~/.config/omarchy/shell.json`:
 omarchy-shell maaj.journal refresh    # ask journal status again
 omarchy-shell maaj.journal write      # same as a left click
 ```
+
+## Licence
+
+MIT. See [LICENSE](LICENSE).
