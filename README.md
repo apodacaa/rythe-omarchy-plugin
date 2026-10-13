@@ -23,9 +23,23 @@ it up as soon as it's installed.
 Everything comes from `journal status --json`, which is asked every five minutes. That is counts
 and dates only: no entry text or titles ever reach the bar.
 
-## Install
+## Requirements
 
-It needs the `journal` CLI on the shell's PATH (`~/.local/bin` is).
+- [Omarchy](https://omarchy.org) 4 or later, which is where the plugin system comes from.
+- The [`journal`](https://github.com/apodacaa/journal) CLI. The widget is only a view of it: the
+  CLI is the journal, and it is not installed with the plugin. With
+  [uv](https://docs.astral.sh/uv/):
+
+  ```
+  uv tool install git+https://github.com/apodacaa/journal
+  ```
+
+  That puts `journal` in `~/.local/bin`, which is on the shell's PATH. There is nothing to set up
+  after that; `journal setup` is there if you want to choose where the journal lives.
+
+The two can be installed in either order. Without the CLI the widget shows `!` until it appears.
+
+## Install
 
 ```
 omarchy plugin add <git-url-or-path-of-this-repo> --enable
