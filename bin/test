@@ -9,4 +9,4 @@ omarchy plugin validate .
 # qmllint ships with Qt but isn't on PATH. It can't see every type the shell provides, so its
 # warnings are for reading, not a gate; a syntax error still fails the run.
 QMLLINT=$(command -v qmllint || echo /usr/lib/qt6/bin/qmllint)
-"$QMLLINT" -I "${OMARCHY_PATH:-/usr/share/omarchy}/shell" JournalWidget.qml
+"$QMLLINT" -I "${OMARCHY_PATH:-/usr/share/omarchy}/shell" RytheWidget.qml

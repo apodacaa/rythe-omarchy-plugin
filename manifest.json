@@ -1,18 +1,18 @@
 {
   "schemaVersion": 1,
-  "id": "io.github.apodacaa.journal",
-  "name": "Journal",
-  "version": "0.1.0",
+  "id": "io.github.apodacaa.rythe",
+  "name": "Rythe",
+  "version": "0.2.0",
   "author": "anthony apodaca",
   "description": "Days since the last journal entry; click to write one",
   "kinds": [
     "bar-widget"
   ],
   "entryPoints": {
-    "barWidget": "JournalWidget.qml"
+    "barWidget": "RytheWidget.qml"
   },
   "barWidget": {
-    "displayName": "Journal",
+    "displayName": "Rythe",
     "description": "Days since the last journal entry; click to write one",
     "category": "Productivity",
     "defaultSection": "right",

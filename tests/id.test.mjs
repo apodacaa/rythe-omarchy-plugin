@@ -6,7 +6,7 @@ import { test } from "node:test"
 
 const read = (name) => readFileSync(new URL("../" + name, import.meta.url), "utf8")
 const id = JSON.parse(read("manifest.json")).id
-const qml = read("JournalWidget.qml")
+const qml = read("RytheWidget.qml")
 
 test("the widget's module name and IPC target are the manifest's id", () => {
   assert.match(qml, new RegExp('moduleName: "' + id.replaceAll(".", "\\.") + '"'))

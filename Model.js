@@ -1,7 +1,7 @@
-// What the bar shows, worked out from `journal status --json`. Plain functions with no QML in
+// What the bar shows, worked out from `rythe status --json`. Plain functions with no QML in
 // them, so `bin/test` can run them under node. Counts and dates only: entry text never gets here.
 
-// The status object, or null if the output isn't one (journal missing, or it printed an error).
+// The status object, or null if the output isn't one (rythe missing, or it printed an error).
 function parse(text) {
   var status
   try {
@@ -26,7 +26,7 @@ function writtenToday(status) {
 }
 
 // The text beside the icon: "3d" once a day or more has passed, otherwise nothing. `missing` is
-// true when the journal CLI isn't installed, which gets a "!" so the widget says so.
+// true when the rythe CLI isn't installed, which gets a "!" so the widget says so.
 function label(status, missing) {
   if (missing) return "!"
   var days = daysSince(status)
@@ -38,7 +38,7 @@ function plural(count, one, many) {
 }
 
 function tooltip(status, missing) {
-  if (missing) return "journal CLI not installed · click to check again"
+  if (missing) return "rythe CLI not installed · click to check again"
   if (!status) return ""
   var days = daysSince(status)
   var parts = []

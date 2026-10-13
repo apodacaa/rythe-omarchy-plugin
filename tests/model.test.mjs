@@ -21,7 +21,7 @@ const empty = { last_entry_id: null, last_entry_at: null, days_since: null, week
 test("parse accepts a status object and rejects anything else", () => {
   assert.equal(Model.parse(JSON.stringify(status())).days_since, 3)
   assert.equal(Model.parse(JSON.stringify(empty)).days_since, null)
-  for (const bad of ["", "journal: no such command", "[]", "null", "3", '{"other": 1}']) {
+  for (const bad of ["", "rythe: no such command", "[]", "null", "3", '{"other": 1}']) {
     assert.equal(Model.parse(bad), null, bad)
   }
 })
@@ -55,7 +55,7 @@ test("the tooltip says when the last entry was, this week's count, and on-this-d
 test("a missing CLI gets a mark and a tooltip that says so, whatever the status", () => {
   for (const s of [null, empty, status()]) {
     assert.equal(Model.label(s, true), "!")
-    assert.equal(Model.tooltip(s, true), "journal CLI not installed · click to check again")
+    assert.equal(Model.tooltip(s, true), "rythe CLI not installed · click to check again")
   }
   assert.equal(Model.label(status(), false), "3d")
   assert.equal(Model.tooltip(null, false), "")
