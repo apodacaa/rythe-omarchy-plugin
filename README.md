@@ -26,7 +26,7 @@ and dates only: no entry text or titles ever reach the bar.
 ## Requirements
 
 - [Omarchy](https://omarchy.org) 4 or later, which is where the plugin system comes from.
-- The [`journal`](https://github.com/apodacaa/journal) CLI. The widget is only a view of it: the
+- The [`journal`](https://github.com/apodacaa/journal) CLI, 0.1.0 or later. The widget is only a view of it: the
   CLI is the journal, and it is not installed with the plugin. With
   [uv](https://docs.astral.sh/uv/):
 
@@ -38,6 +38,8 @@ and dates only: no entry text or titles ever reach the bar.
   after that; `journal setup` is there if you want to choose where the journal lives.
 
 The two can be installed in either order. Without the CLI the widget shows `!` until it appears.
+
+[CHANGELOG.md](CHANGELOG.md) lists what changed in each version.
 
 ## Install
 
