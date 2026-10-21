@@ -49,8 +49,5 @@ function tooltip(status, missing) {
 
   var week = Number(status.week_count) || 0
   if (days >= 0) parts.push(plural(week, "entry", "entries") + " this week")
-
-  var onThisDay = Number(status.on_this_day_count) || 0
-  if (onThisDay > 0) parts.push(onThisDay + " on this day")
   return parts.join(" · ")
 }

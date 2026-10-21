@@ -11,7 +11,7 @@ has been since the last journal entry. It's a nudge to write, and a one-click wa
 | a book and `!` | the `rythe` CLI isn't installed |
 | nothing | `rythe` is installed but `rythe status` failed |
 
-Hovering shows a little more: `Last entry 3 days ago · 2 entries this week · 1 on this day`.
+Hovering shows a little more: `Last entry 3 days ago · 2 entries this week`.
 
 - **Left click** opens a terminal on a new entry (plain `rythe`). When the editor closes, the
   widget refreshes, so the count drops straight away.

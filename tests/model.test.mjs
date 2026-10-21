@@ -13,10 +13,9 @@ const status = (over) => ({
   last_entry_at: "2026-10-10T19:53:12+02:00",
   days_since: 3,
   week_count: 2,
-  on_this_day_count: 0,
   ...over,
 })
-const empty = { last_entry_id: null, last_entry_at: null, days_since: null, week_count: 0, on_this_day_count: 0 }
+const empty = { last_entry_id: null, last_entry_at: null, days_since: null, week_count: 0 }
 
 test("parse accepts a status object and rejects anything else", () => {
   assert.equal(Model.parse(JSON.stringify(status())).days_since, 3)
@@ -41,12 +40,14 @@ test("only an entry from today counts as written today", () => {
   assert.equal(Model.writtenToday(null), false)
 })
 
-test("the tooltip says when the last entry was, this week's count, and on-this-day if any", () => {
+test("the tooltip says when the last entry was, and this week's count", () => {
   assert.equal(Model.tooltip(status({ days_since: 0, week_count: 1 })), "Wrote today · 1 entry this week")
   assert.equal(Model.tooltip(status({ days_since: 1, week_count: 4 })), "Last entry yesterday · 4 entries this week")
+  assert.equal(Model.tooltip(status({ days_since: 9, week_count: 0 })), "Last entry 9 days ago · 0 entries this week")
+  // An older rythe still sends on_this_day_count; the tooltip ignores it.
   assert.equal(
     Model.tooltip(status({ days_since: 9, week_count: 0, on_this_day_count: 2 })),
-    "Last entry 9 days ago · 0 entries this week · 2 on this day",
+    "Last entry 9 days ago · 0 entries this week",
   )
   assert.equal(Model.tooltip(empty), "No journal entries yet")
   assert.equal(Model.tooltip(null), "")
