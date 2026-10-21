@@ -4,6 +4,12 @@ What changed in each version, newest first. The version is in `manifest.json`. V
 [semantic versioning](https://semver.org): from 1.0.0 on, a change that breaks the plugin id, an
 `omarchy-shell` command or a settings key is a new major version.
 
+## 0.3.0
+
+**The tooltip no longer says "N on this day"**, following `rythe` 0.3.0, which removed "on this day"
+(nothing in the journaling research shows that being shown old entries helps, and it can feed
+rumination). Works with `rythe` 0.2.0 or later: an older CLI's extra `on_this_day_count` field is ignored.
+
 ## 0.2.0
 
 **Renamed to rythe**, following the CLI, which is now `rythe` (a rythe is a small stream; say

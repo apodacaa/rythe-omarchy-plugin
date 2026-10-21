@@ -2,7 +2,7 @@
   "schemaVersion": 1,
   "id": "io.github.apodacaa.rythe",
   "name": "Rythe",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "anthony apodaca",
   "description": "Days since the last journal entry; click to write one",
   "kinds": [
